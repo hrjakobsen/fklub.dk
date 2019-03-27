@@ -1,0 +1,35 @@
+(define laml-dir (getenv "LAMLDIR"))
+(load (string-append laml-dir "laml.scm"))
+(laml-style "simple-xhtml1.0-transitional-validating")
+(begin-laml)
+
+(define (fac n)
+  (if (= 0 n) 1 (* n (fac (- n 1)))))
+
+(define menu '(("a" . "b") ("c" . "d") ("e" . "f")))
+
+(write-xml '(raw prolog)
+ (html 
+  (head 
+    (title "Factorials")
+    (link 'rel "stylesheet" 'href "style.css"))
+  (body
+    (h1 "Factorials")
+    (ul
+      (map (lambda (x) (li (a 'href (cdr x) (car x)))) menu)
+    )
+
+    (table 'border "1"
+     (tbody
+      (tr 
+        (td "1") (td (fac 1)))
+      (tr 
+        (td "2") (td (fac 2)))
+      (tr 
+        (td "3") (td (fac 3)))
+      (tr 
+        (td "4") (td (fac 4)))))
+ ))
+)
+
+(end-laml)

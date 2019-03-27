@@ -1,0 +1,2 @@
+cd static
+laml ../static-laml/*
