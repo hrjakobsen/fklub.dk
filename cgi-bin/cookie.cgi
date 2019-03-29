@@ -19,30 +19,16 @@
 (load "common.scm")
 (load "lib/cgi.scm")
 (load "lib/file.scm")
+(load "lib/cookies.scm")
+(load "lib/url.scm")
 
-(define questions 
-	(let ((data (read-data-file "/data/faq.scm"))) 
-		(if (list? data) (reverse data) (list))))
-
-
-(define (faq questions) 
-	  	(div 
-		  	menu-list
-		    (if (null? questions) #f
-				(ul
-			  		(map (lambda (x) (li (string-append (car x) " - " (cdr x)))) questions)
-				))
-
-		 	(form-1 
-		 		"upload-faq.cgi"
-		 		(con 
-		 			(text-line 'question 3 "")
-		 			(text-line 'answer 3 "")
-		 			(submit "Tilføj FAQ")
-		 		)
-		 	)))
-	
-
-(write-page "test" (faq questions))
-
+(set-cookie! 'testcookie "test af en hest")
+(write-page "test" 
+    (div 
+        menu-list
+        (ul
+            (map (lambda (x) (li (if (string? (cdr x)) "true" "false"))) (get-all-cookies #f)))
+        (p (get-cookie 'session-id))
+        (p (url-decode (url-encode "test af en hest...")))
+    ))
 (end)

@@ -6,6 +6,11 @@
 (define (fac n)
   (if (= 0 n) 1 (* n (fac (- n 1)))))
 
+(define (range start end) (if (= start end) '() (cons start (range (+ start 1) end))))
+
+(define numbers (range 1 1000))
+
+
 (define menu '(("a" . "b") ("c" . "d") ("e" . "f")))
 
 (write-xml '(raw prolog)
@@ -21,14 +26,8 @@
 
     (table 'border "1"
      (tbody
-      (tr 
-        (td "1") (td (fac 1)))
-      (tr 
-        (td "2") (td (fac 2)))
-      (tr 
-        (td "3") (td (fac 3)))
-      (tr 
-        (td "4") (td (fac 4)))))
+      (map (lambda (x) (tr (td (number->string x)) (td (fac x)))) numbers)
+      ))
  ))
 )
 

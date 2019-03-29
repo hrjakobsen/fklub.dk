@@ -1,7 +1,7 @@
 version: '3'
 services:
     web:
-        image: hrjakobsen/laml:latest
+        build: .
         volumes:
             - ./cgi-bin:/usr/local/cgi-bin
             - ./static:/var/www/html

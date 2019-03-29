@@ -17,29 +17,34 @@
 (define url-pars (extract-url-parameters))
 
 (load "common.scm")
+(load "lib/cgi.scm")
+(load "lib/file.scm")
 
-(define images 
-	(let ((data (read-data-file "/data/galleri.scm"))) 
-		(if (list? data) (reverse data) (list))))
+(define cur-gallery 
+    (as-symbol (defaulted-get 'cur-gallery url-pars 'none )))
+	
+(define galleries (dir-list "/data/galleries/"))
 
+(define (get-images gallery-id) 
+	(dir-list (string-append "/data/galleries/" gallery-id)))
 
-
-(define (gallery imgs) 
+(define gallery-overview
 	  	(div 
 		  	menu-list
-		    (if (null? imgs) #f
-			  	(div (map (lambda (x) (img 'src x)) imgs))
-			    )
+		    (map (lambda (g) (a 'href (string-append "galleri.cgi?cur-gallery=" g) g)) galleries)))
 
-		 	(form-1 
-		 		"upload-image.cgi"
-		 		(con 
-		 			(text-line 'new-url 3 "")
-		 			(submit "Tilføj billede")
-		 		)
-		 	)))
-	
+(define (gallery gallery-id)
+	(div 
+		menu-list
+		(map (lambda (image) (img 'src (string-append "/galleries/" gallery-id "/" image))) (get-images gallery-id))))
+		  
+	  
 
-(write-page "test" (gallery images))
+(define page-body
+	(if (eq? 'none cur-gallery)
+		gallery-overview
+		(gallery (symbol->string cur-gallery))))
+
+(write-page "test" page-body)
 
 (end)

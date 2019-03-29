@@ -13,6 +13,8 @@
 (lib-load "html4.01-transitional-validating/convenience.scm")
 
 (load "common.scm")
+(load "lib/file.scm")
+(load "lib/cgi.scm")
 
 (define cgi-testing #f)
 
