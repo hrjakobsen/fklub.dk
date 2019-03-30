@@ -1,5 +1,5 @@
-(load "lib/common.scm")
-(load "lib/url.scm")
+(cgi-lib-load "lib/common.scm")
+(cgi-lib-load "lib/url.scm")
 
 (define (set-cookie! name content) 
     (display (string-append "Set-Cookie: " (symbol->string name) "=" (url-encode content) "; SameSite=Strict\n")))

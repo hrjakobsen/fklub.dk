@@ -7,16 +7,18 @@
 (lib-load "encode-decode.scm") ;  
 (lib-load "color.scm") ;  
 (lib-load "file-read.scm") ;  
+(lib-load "crypt.scm") ;  
 
 ; HTML mirror loading
 (lib-load "html4.01-transitional-validating/basis.scm")
 (lib-load "html4.01-transitional-validating/surface.scm")
 (lib-load "html4.01-transitional-validating/convenience.scm")
 
-(load "lib/cookies.scm")
-(load "lib/cgi.scm")
-(load "lib/file.scm")
-(load "lib/common.scm")
+(load "/usr/local/cgi-bin/lib/common.scm")
+(cgi-lib-load "lib/cookies.scm")
+(cgi-lib-load "lib/cgi.scm")
+(cgi-lib-load "lib/file.scm")
+(cgi-lib-load "lib/common.scm")
 
 (define cgi-testing #f)
 (define url-pars (extract-url-parameters))
@@ -29,14 +31,17 @@
     (as-symbol (defaulted-get 'error url-pars 'none )))
 
 (define (print-error err)
-    (redirect (string-append "login.cgi?error=" (url-encode err))))
+    (redirect (string-append "/cgi-bin/login.cgi?error=" (url-encode err))))
 
 (define random-session (lambda () (random-string 64)))
+
+(define (hash-password password)
+    (crypt-string password))
 
 (define (correct-password? username password)
     (let* 
         ((data (read-data-file (string-append "/data/users/" username "/password.dat"))))
-        (equal? data password)
+        (equal? data (hash-password password))
     ))
 
 (define perform-login (lambda () 
@@ -53,7 +58,8 @@
             (begin
                 (write-data-file (string-append "/data/users/" username "/session.dat") session-id)
                 (set-cookie! 'session-id session-id)
-                (redirect "index.cgi")
+                (set-cookie! 'username username)
+                (redirect "/cgi-bin/index.cgi")
                 )))))))
 
 (if (eq? mode 'do-login)

@@ -1,4 +1,4 @@
-(load "lib/common.scm")
+(cgi-lib-load "lib/common.scm")
 
 (define substitutions
     '(
