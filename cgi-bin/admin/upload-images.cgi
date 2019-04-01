@@ -19,6 +19,8 @@
 (cgi-lib-load "common.scm")
 (cgi-lib-load "lib/file.scm")
 
+(ensure-admin)
+
 (define cgi-testing #f)
 
 (define url-pars (extract-url-parameters))

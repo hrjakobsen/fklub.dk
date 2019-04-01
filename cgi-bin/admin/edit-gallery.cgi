@@ -75,12 +75,11 @@
 
 (define page-body
 	(con
-		menu-list
 		admin-menu-list
 		(if (eq? 'none cur-gallery)
 			gallery-overview
 			(gallery (symbol->string cur-gallery)))))
 
-(write-page "test" page-body)
+(fklub-page "test" page-body)
 
 (end)

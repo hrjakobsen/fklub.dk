@@ -26,7 +26,6 @@
 
 (define (faq questions) 
 	  	(div 
-		  	menu-list
 		    (if (null? questions) #f
 				(ul
 			  		(map (lambda (x) (li (string-append (car x) " - " (cdr x)))) questions)
@@ -41,6 +40,6 @@
 		 		)
 		 	)))
 
-(write-page "test" (faq questions))
+(fklub-page "test" (faq questions))
 
 (end)

@@ -14,9 +14,7 @@
 (load "common.scm")
 (define cgi-testing #f)
 
-(write-page
-  "test"
-  menu-list
-)
-
+(fklub-page
+  "Forside"
+  (p "page"))
 (end)

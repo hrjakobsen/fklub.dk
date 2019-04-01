@@ -22,10 +22,9 @@
 (ensure-admin)
 
 
-(write-page
+(fklub-page
   "test"
   (con 
-    menu-list
     admin-menu-list
     )
 )

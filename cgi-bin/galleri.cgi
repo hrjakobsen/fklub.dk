@@ -30,12 +30,10 @@
 
 (define gallery-overview
 	  	(div 
-		  	menu-list
 		    (map (lambda (g) (a 'href (string-append "galleri.cgi?cur-gallery=" g) g)) galleries)))
 
 (define (gallery gallery-id)
 	(div 
-		menu-list
 		(map (lambda (image) (img 'src (string-append "/galleries/" gallery-id "/" image))) (get-images gallery-id))))
 		  
 	  
@@ -45,6 +43,6 @@
 		gallery-overview
 		(gallery (symbol->string cur-gallery))))
 
-(write-page "test" page-body)
+(fklub-page "Gallery" page-body)
 
 (end)
