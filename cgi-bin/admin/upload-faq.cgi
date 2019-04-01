@@ -12,22 +12,29 @@
 (lib-load "html4.01-transitional-validating/surface.scm")
 (lib-load "html4.01-transitional-validating/convenience.scm")
 
-(load "common.scm")
+
+(load "/usr/local/cgi-bin/lib/common.scm")
+(cgi-lib-load "admin/admin.scm")
+(cgi-lib-load "common.scm")
+(cgi-lib-load "lib/file.scm")
+
+(ensure-admin)
 
 (define cgi-testing #f)
 
 (define url-pars (extract-url-parameters))
 
-(define images 
-	(let ((data (read-data-file "/data/galleri.scm"))) 
+(define questions 
+	(let ((data (read-data-file "/data/faq.scm"))) 
 		(if (list? data) (reverse data) (list))))
 
 (let* ((form-a-list (map symbolize-key (extract-form-input))) ;  
-    (url (as-string (get 'new-url form-a-list)))
+    (question (as-string (get 'question form-a-list)))
+    (answer (as-string (get 'answer form-a-list)))
    )
 (begin 
-	(write-data-file "/data/galleri.scm" (cons url images))
-	(redirect "galleri.cgi")
+	(write-data-file "/data/faq.scm" (cons (cons question answer) questions))
+	(redirect "/cgi-bin/admin/edit-faq.cgi")
 )
 )
 

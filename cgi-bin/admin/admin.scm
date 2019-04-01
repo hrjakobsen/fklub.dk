@@ -3,10 +3,18 @@
 (cgi-lib-load "lib/auth.scm")
 
 (define ensure-admin (lambda ()
-    (if ((negate-n admin?) (get-cookie 'username ) (get-cookie 'session-id )) 
+    (if (admin? (get-cookie 'username ) (get-cookie 'session-id )) 
+        #t
         (begin 
             (redirect "/cgi-bin/login.cgi") 
             (end))
-        #t)))
+        )))
 
+(define admin-menu '(
+    ("Rediger FAQ" . "/cgi-bin/admin/edit-faq.cgi")
+    ("Rediger Galleri" . "/cgi-bin/admin/edit-gallery.cgi")))
 
+(define admin-menu-list 
+    (ul
+        (map (lambda (x) (li (a 'href (cdr x) (car x)))) admin-menu)
+    ))

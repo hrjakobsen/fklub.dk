@@ -24,7 +24,10 @@
 
 (write-page
   "test"
-  menu-list
+  (con 
+    menu-list
+    admin-menu-list
+    )
 )
 
 (end)

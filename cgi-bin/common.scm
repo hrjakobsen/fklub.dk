@@ -9,7 +9,7 @@
 (lib-load "html4.01-transitional-validating/surface.scm")
 (lib-load "html4.01-transitional-validating/convenience.scm")
 
-(define menu '(("Galleri" . "/cgi-bin/galleri.cgi") ("FAQ" . "/cgi-bin/faq.cgi") ("Kalender" . "/cgi-bin/kalender.cgi") ("Cookie" . "/cgi-bin/cookie.cgi") ("Login" . "/cgi-bin/login.cgi") ("FIKI" . "http://fff.fklub.dk")))
+(define menu '(("Galleri" . "/cgi-bin/galleri.cgi") ("FAQ" . "/cgi-bin/faq.cgi") ("Kalender" . "/cgi-bin/kalender.cgi") ("Cookie" . "/cgi-bin/cookie.cgi") ("Admin" . "/cgi-bin/admin/index.cgi") ("FIKI" . "http://fff.fklub.dk")))
 
 (define menu-list 
 	(ul

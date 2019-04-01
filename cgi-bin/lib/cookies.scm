@@ -6,14 +6,15 @@
 
 (define (debug x)
     (begin
-        (display x)
+        (display x (current-error-port))
         x))
 
 (define (get-cookie name) 
     (eq-lookup name (get-all-cookies #f)))
 
 (define (get-all-cookies x)
-    (cookie-to-assoc (getenv "HTTP_COOKIE")))
+    (let ((cookies (getenv "HTTP_COOKIE")))
+    (if cookies (cookie-to-assoc cookies) '())))
 
 (define (cookie-to-assoc cookie-string)
     (let* (

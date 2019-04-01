@@ -31,16 +31,7 @@
 		    (if (null? questions) #f
 				(ul
 			  		(map (lambda (x) (li (string-append (car x) " - " (cdr x)))) questions)
-				))
-
-		 	(form-1 
-		 		"upload-faq.cgi"
-		 		(con 
-		 			(text-line 'question 3 "")
-		 			(text-line 'answer 3 "")
-		 			(submit "Tilføj FAQ")
-		 		)
-		 	)))
+				))))
 	
 
 (write-page "test" (faq questions))
