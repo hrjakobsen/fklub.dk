@@ -26,9 +26,11 @@
 (define cur-gallery 
 	(as-symbol (defaulted-get 'cur-gallery url-pars 'none )))
 
-
 (set! ip (current-input-port))
 
+;; Redefinition of internal LAML function. 
+; Read the file byte-by-byte instead of character-by-character
+; As it will only work for text-files otherwise.
 (define (generic-read-char ip)
   (cond ((input-port? ip) (integer->char (read-byte ip)))
         ((string? ip) 
@@ -40,7 +42,8 @@
         (else (laml-error "generic-read-char: ip must be a string or an input stream"))))
 
 
-
+;; Redefinition of internal LAML function. 
+; Write the file byte-by-byte instead of char-by-char
 (define (pass-uploaded-file-1! op boundary match-pos boundary-lgt)
     (if (= boundary-lgt match-pos) ; @a
         'done

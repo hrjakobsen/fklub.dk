@@ -32,12 +32,33 @@
 	(dir-list (string-append "/data/galleries/" gallery-id)))
 
 (define gallery-overview
-	(map (lambda (g) (a 'href (string-append "edit-gallery.cgi?cur-gallery=" g) g)) galleries))
+	(con 
+		(map (lambda (g) (a 'href (string-append "edit-gallery.cgi?cur-gallery=" g) g)) galleries)
+		(form-1 
+			"create-gallery.cgi"
+			(con 
+				(text-line 'name 3 "")
+				(submit "Opret")))))
 
 (define (gallery gallery-id)
 	(con
-		;(map (lambda (image) (img 'src (string-append "/galleries/" gallery-id "/" image))) (get-images gallery-id))
-			
+		(if (> (length (get-images gallery-id)) 0)
+			(table 'border 1
+				(tbody
+					(map (lambda (image)
+					(tr
+						(td 
+							(img 'width 200 'src (string-append "/galleries/" gallery-id "/" image)))
+						(td 
+							(form-1 
+								(string-append "remove-image.cgi?cur-gallery=" gallery-id)
+								(con 
+									(hidden-line 'image image)
+									(submit "SLET")
+								)
+							)))) (get-images gallery-id)))
+				)
+				(p "No images"))
 		(multipart-form 
 			(string-append "upload-images.cgi?cur-gallery=" gallery-id) 
 			(string-append "/data/galleries/" gallery-id "/") 
@@ -46,7 +67,10 @@
 				(input 'type "hidden" 'name "cur-gallery" 'value gallery-id)
 				(input 'type "file" 'name "images" 'multiple "")
 				(submit "Tilføj billede")))
-))
+		(form-1 
+			(string-append "remove-gallery.cgi?cur-gallery=" gallery-id)
+			(con 
+				(submit "SLET GALLERI")))))
 
 
 (define page-body
