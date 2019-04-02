@@ -27,8 +27,25 @@
 (define (dictionary entries) 
 	  	(div 
 		    (if (null? entries) (p "Ingen opslag")
-				(ul
-			  		(map (lambda (x) (li (string-append (car x) " - " (cdr x)))) entries)
+				(table 'border 1
+					(thead
+						(tr
+							(th "Spørgsmål")
+							(th "Svar")
+							(th "Slet")))
+					(tbody
+						  (map (lambda (x) 
+							(tr 
+								(td (car x)) 
+								(td  (cdr x))
+								(td 
+									(form-1
+										"remove-f-ordbog-word.cgi"
+										(con
+											(hidden-line 'word (car x))
+											(submit "Slet")
+											)))
+							)) entries))
 				))
 
 		 	(form-1 
@@ -40,6 +57,6 @@
 		 		)
 		 	)))
 
-(fklub-page "test" (dictionary entries))
+(fklub-page "test" (con admin-menu-list (dictionary entries)))
 
 (end)

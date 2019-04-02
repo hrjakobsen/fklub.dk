@@ -27,9 +27,25 @@
 (define (faq questions) 
 	  	(div 
 		    (if (null? questions) (p "Ingen spørgsmål")
-				(ul
-			  		(map (lambda (x) (li (string-append (car x) " - " (cdr x)))) questions)
-				))
+				(table 'border 1
+					(thead
+						(tr
+							(th "Spørgsmål")
+							(th "Svar")
+							(th "Slet")))
+					(tbody 
+						(map (lambda (x) 
+							(tr 
+								(td (car x))
+								(td (cdr x))
+								(td 
+									(form-1
+										"remove-faq.cgi"
+										(con
+											(hidden-line 'question (car x))
+											(submit "SLET")))
+								))) questions)))
+				)
 
 		 	(form-1 
 		 		"upload-faq.cgi"
@@ -40,6 +56,6 @@
 		 		)
 		 	)))
 
-(fklub-page "test" (faq questions))
+(fklub-page "test" (con admin-menu-list (faq questions)))
 
 (end)
