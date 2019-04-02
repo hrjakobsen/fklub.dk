@@ -17,6 +17,7 @@
 (cgi-lib-load "admin/admin.scm")
 (cgi-lib-load "common.scm")
 (cgi-lib-load "lib/file.scm")
+(cgi-lib-load "lib/utf-8-form-fix.scm")
 
 (ensure-admin)
 
