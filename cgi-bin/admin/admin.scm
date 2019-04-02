@@ -12,7 +12,9 @@
 
 (define admin-menu '(
     ("Rediger FAQ" . "/cgi-bin/admin/edit-faq.cgi")
-    ("Rediger Galleri" . "/cgi-bin/admin/edit-gallery.cgi")))
+    ("Rediger Galleri" . "/cgi-bin/admin/edit-gallery.cgi")
+    ("Rediger F-ordbog" . "/cgi-bin/admin/edit-f-ordbog.cgi")
+    ))
 
 (define admin-menu-list 
     (ul

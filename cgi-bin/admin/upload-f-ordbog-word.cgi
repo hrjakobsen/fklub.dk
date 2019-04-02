@@ -5,13 +5,13 @@
 
 (lib-load "cgi.scm") ;  @a
 (lib-load "encode-decode.scm") ;  
+(lib-load "color.scm") ;  
 
 ; HTML mirror loading
 (lib-load "html4.01-transitional-validating/basis.scm")
 (lib-load "html4.01-transitional-validating/surface.scm")
 (lib-load "html4.01-transitional-validating/convenience.scm")
 
-(define cgi-testing #f)
 
 (load "/usr/local/cgi-bin/lib/common.scm")
 (cgi-lib-load "admin/admin.scm")
@@ -20,26 +20,24 @@
 
 (ensure-admin)
 
-(define questions 
-	(let ((data (safe-read "/data/faq.scm" '()))) 
+(define cgi-testing #f)
+
+(define url-pars (extract-url-parameters))
+
+(define entries 
+	(let ((data (read-data-file "/data/f-ordbog.scm"))) 
 		(if (list? data) (reverse data) (list))))
 
-(define (faq questions) 
-	  	(div 
-		    (if (null? questions) (p "Ingen spørgsmål")
-				(ul
-			  		(map (lambda (x) (li (string-append (car x) " - " (cdr x)))) questions)
-				))
+(let* ((form-a-list (map symbolize-key (extract-form-input))) ;  
+    (word (as-string (get 'word form-a-list)))
+    (meaning (as-string (get 'meaning form-a-list)))
+   )
+(begin 
+	(write-data-file "/data/f-ordbog.scm" (cons (cons word meaning) entries))
+	(redirect "/cgi-bin/admin/edit-f-ordbog.cgi")
+)
+)
 
-		 	(form-1 
-		 		"upload-faq.cgi"
-		 		(con 
-		 			(text-line 'question 3 "")
-		 			(text-line 'answer 3 "")
-		 			(submit "Tilføj FAQ")
-		 		)
-		 	)))
 
-(fklub-page "test" (faq questions))
 
 (end)

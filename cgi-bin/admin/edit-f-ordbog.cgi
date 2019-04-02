@@ -20,26 +20,26 @@
 
 (ensure-admin)
 
-(define questions 
-	(let ((data (safe-read "/data/faq.scm" '()))) 
+(define entries 
+	(let ((data (safe-read "/data/f-ordbog.scm" '()))) 
 		(if (list? data) (reverse data) (list))))
 
-(define (faq questions) 
+(define (dictionary entries) 
 	  	(div 
-		    (if (null? questions) (p "Ingen spørgsmål")
+		    (if (null? entries) (p "Ingen opslag")
 				(ul
-			  		(map (lambda (x) (li (string-append (car x) " - " (cdr x)))) questions)
+			  		(map (lambda (x) (li (string-append (car x) " - " (cdr x)))) entries)
 				))
 
 		 	(form-1 
-		 		"upload-faq.cgi"
+		 		"upload-f-ordbog-word.cgi"
 		 		(con 
-		 			(text-line 'question 3 "")
-		 			(text-line 'answer 3 "")
-		 			(submit "Tilføj FAQ")
+		 			(text-line 'word 3 "")
+		 			(text-line 'meaning 3 "")
+		 			(submit "Tilføj ord")
 		 		)
 		 	)))
 
-(fklub-page "test" (faq questions))
+(fklub-page "test" (dictionary entries))
 
 (end)

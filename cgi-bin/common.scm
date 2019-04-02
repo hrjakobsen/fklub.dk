@@ -12,7 +12,7 @@
 (load "/usr/local/cgi-bin/lib/common.scm")
 (cgi-lib-load "lib/convenience.scm")
 
-(define menu '(("Hjem" . "/cgi-bin/index.cgi") ("Galleri" . "/cgi-bin/galleri.cgi") ("FAQ" . "/cgi-bin/faq.cgi") ("Kalender" . "/cgi-bin/kalender.cgi")  ("Admin" . "/cgi-bin/admin/index.cgi") ("FIKI" . "http://fff.fklub.dk")))
+(define menu '(("Hjem" . "/cgi-bin/index.cgi") ("Galleri" . "/cgi-bin/galleri.cgi") ("FAQ" . "/cgi-bin/faq.cgi") ("F-ordbog" . "/cgi-bin/f-ordbog.cgi") ("Kalender" . "/cgi-bin/kalender.cgi")  ("Admin" . "/cgi-bin/admin/index.cgi") ("FIKI" . "http://fff.fklub.dk")))
 
 (define menu-list 
 	(map (lambda (x) (div 'class "col" (a 'href (cdr x) (car x)))) menu))

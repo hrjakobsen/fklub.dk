@@ -21,3 +21,10 @@
 
 (define (ensure-exists dir) 
 	(if (directory-exists? dir) #t (make-directory dir)))
+
+(define (ensure-file-exists path default-data)
+	(if (file-exists? path) #t (write-data-file path default-data)))
+	
+(define (safe-read path data)
+	(ensure-file-exists path data)
+	(read-data-file path))

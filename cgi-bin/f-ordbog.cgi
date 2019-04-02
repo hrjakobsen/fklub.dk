@@ -20,19 +20,19 @@
 (load "lib/cgi.scm")
 (load "lib/file.scm")
 
-(define questions 
-	(let ((data (safe-read "/data/faq.scm" '()))) 
+(define entries 
+	(let ((data (read-data-file "/data/f-ordbog.scm"))) 
 		(if (list? data) (reverse data) (list))))
 
 
-(define (faq questions) 
+(define (dictionary entries) 
 	  	(div 
-		    (if (null? questions) (p "Ingen spørgsmål")
+		    (if (null? entries) (p "Ingen opslag")
 				(ul
-			  		(map (lambda (x) (li (string-append (car x) " - " (cdr x)))) questions)
+			  		(map (lambda (x) (li (string-append (car x) " - " (cdr x)))) entries)
 				))))
 	
 
-(fklub-page "test" (faq questions))
+(fklub-page "test" (dictionary entries))
 
 (end)
