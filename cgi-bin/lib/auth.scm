@@ -1,7 +1,9 @@
 (define (admin? username session-id)
     (and 
-        (string? username) 
+        (string? username)
+        (> (string-length username) 0) 
         (string? session-id)
+        (> (string-length session-id) 0) 
         (correct-session? username session-id)))
 
 

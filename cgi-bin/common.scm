@@ -44,7 +44,9 @@
 				(link 'rel "stylesheet" 'href "/style.css")
 				(link 'rel "stylesheet" 'href "https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap")
 				(link 'rel "stylesheet" 'href "https://fonts.googleapis.com/css?family=Open+Sans&display=swap")
-				(link 'rel "stylesheet" 'href "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"))
+				(link 'rel "stylesheet" 'href "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css")
+				(link 'rel "stylesheet" 'href "/js/lightbox/dist/css/lightbox.min.css")
+				(script 'src "/js/lightbox/dist/js/lightbox-plus-jquery.min.js"))
 			(body 
 				(con 
 					fklub-header

@@ -73,3 +73,13 @@ body {
         transform: translateX(-100%);
     }
   }
+
+.gallery-thumbnail {
+    max-width: 100%;
+    max-height: 200px;
+    margin-bottom: 20px;
+}
+
+.gallery-col .col {
+    text-align: center;
+}

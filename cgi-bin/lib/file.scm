@@ -28,3 +28,5 @@
 (define (safe-read path data)
 	(ensure-file-exists path data)
 	(read-data-file path))
+
+(define (get-last-edit file) (seconds->date (file-or-directory-modify-seconds file)))

@@ -17,7 +17,13 @@ This is a work-in-progress for the new front-page for [fklub.dk](http://fklub.dk
 ```bash
 git clone https://github.com/hrjakobsen/fklub.dk
 ```
-2. Run `docker-compose up`
+2. Run `docker-compose up -d`
 3. Access the page at http://localhost:4000
 
-You may have to figure out some permission for the daemon user to allow it to read/write files in the /data directory.
+## Creating an admin user
+After the server has been started in step to, add a new user 
+```bash
+docker exec -it fklub_web_1 /scripts/new-user
+```
+You can now use the specified username and password to log in to site
+

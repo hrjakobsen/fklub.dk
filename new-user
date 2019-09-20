@@ -1,0 +1,4 @@
+#!/bin/bash
+mkdir -p /data/users
+/scripts/new-user-internal.scm
+chown -R daemon:daemon /data/users/

@@ -14,6 +14,7 @@
     ("Rediger FAQ" . "/cgi-bin/admin/edit-faq.cgi")
     ("Rediger Galleri" . "/cgi-bin/admin/edit-gallery.cgi")
     ("Rediger F-ordbog" . "/cgi-bin/admin/edit-f-ordbog.cgi")
+    ("Log ud" . "/cgi-bin/logout.cgi")
     ))
 
 (define admin-menu-list 
