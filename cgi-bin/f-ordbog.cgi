@@ -24,15 +24,20 @@
 	(let ((data (read-data-file "/data/f-ordbog.scm"))) 
 		(if (list? data) (reverse data) (list))))
 
+(define (create-entry x)
+	(div 'class "word-definition"
+		(div 'class "word-title"
+			(span 'class "title-text" (car x)))
+		(div 'class "word-description"
+			(span 'class="description-text" (cdr x)))))
+
 
 (define (dictionary entries) 
 	  	(div 
 		    (if (null? entries) (p "Ingen opslag")
-				(ul
-			  		(map (lambda (x) (li (string-append (car x) " - " (cdr x)))) entries)
+				(con
+			  		(map create-entry entries)
 				))))
 	
-
 (fklub-page "test" (dictionary entries))
-
 (end)

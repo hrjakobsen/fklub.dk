@@ -10,5 +10,6 @@ services:
             - "4000:80"
         environment:
           - LAMLDIR=/usr/bin/laml/
+        tty: true
 volumes:
     laml-data:

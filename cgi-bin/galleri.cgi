@@ -29,8 +29,11 @@
 	(dir-list (string-append "/data/galleries/" gallery-id)))
 
 (define gallery-overview
-	  	(div 
-		    (map (lambda (g) (a 'href (string-append "galleri.cgi?cur-gallery=" g) g)) galleries)))
+		(div 'class "gallery"
+			(heading "Galleri")
+	  		(div 'class "list-group"
+		    	(map (lambda (g) (a  'class "list-group-item list-group-item-action" 'href (string-append "galleri.cgi?cur-gallery=" g) g)) galleries))))
+
 
 (define (gallery gallery-id)
 	(div 

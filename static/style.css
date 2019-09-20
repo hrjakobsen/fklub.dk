@@ -2,6 +2,7 @@
     position: relative;
     height: 50px;
     overflow: hidden;
+    line-height: 50px;
 }
 
 .rolling {
@@ -10,10 +11,57 @@
     white-space: nowrap;
     left: 100%;
     top: 0;
-    animation: slider 20s infinite linear, blinking 1s infinite linear;
+    animation: slider 20s infinite linear;
+    color: white;
 }
 
+html, body {
+    height: 100%;
+}
 
+body {
+    display: flex;
+    flex-direction: column;
+    font-family: "Open Sans", Arial, Helvetica, sans-serif;
+}
+
+.content {
+    margin: 20px 0;
+    flex: 1 0 auto;
+}
+
+.header, .footer {
+    flex-shrink: 0;
+}
+
+.footer {
+    background: #424242;
+}
+
+.fklub-logo {
+    flex-shrink: 0;
+    flex-grow: 0;
+    box-sizing: border-box;
+    height: 75px;
+}
+
+.menu-link {
+    color: black;
+    font-family: "Josefin Sans";
+    text-align: center;
+}
+
+.menu {
+    text-align: center;
+}
+
+.menu i {
+    line-height: 75px;
+}
+
+.header {
+    line-height: 75px;
+}
 
 @keyframes slider {
     from {
@@ -23,16 +71,5 @@
     to {
         left: 0%;
         transform: translateX(-100%);
-    }
-  }
-
-
-
-  @keyframes blinking {
-    from {
-        color: red;
-    }
-    to {
-        color: green;
     }
   }

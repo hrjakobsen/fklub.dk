@@ -1,2 +1,3 @@
 FROM hrjakobsen/laml:latest
-CMD ["ln", "-s", "/data/galleries/", "/var/www/html/galleries"]
+ADD "setup.sh" "/scripts/setup.sh"
+CMD ["/scripts/setup.sh"]

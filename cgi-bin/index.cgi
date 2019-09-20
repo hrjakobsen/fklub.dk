@@ -18,7 +18,5 @@
   "Forside"
   (con
     (p "page")
-        (div 'class "slider"
-        (p 'class "rolling" "Siden er udviklet i LAML af FIT &mdash; F-klubbens IT udvalg"))
   ))
 (end)
