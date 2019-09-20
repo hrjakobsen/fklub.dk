@@ -27,3 +27,8 @@ docker exec -it fklub_web_1 /scripts/new-user
 ```
 You can now use the specified username and password to log in to site
 
+## Debugging
+When the server is running, you can follow the access/error log with the following command
+```bash
+docker logs fklub_web_1 -f --tail 10
+```
