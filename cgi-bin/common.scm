@@ -35,3 +35,7 @@
 					(con 
 						fklub-header
 						x))))))
+
+(define (repeat-el x el)
+	(if (<= x 1) el
+		(con el (repeat (- x 1) el))))

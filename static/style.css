@@ -1,0 +1,38 @@
+.slider {
+    position: relative;
+    height: 50px;
+    overflow: hidden;
+}
+
+.rolling {
+    position: absolute;
+    display: inline-block;
+    white-space: nowrap;
+    left: 100%;
+    top: 0;
+    animation: slider 20s infinite linear, blinking 1s infinite linear;
+}
+
+
+
+@keyframes slider {
+    from {
+        left: 100%;
+        transform: translateX(0%);
+    }
+    to {
+        left: 0%;
+        transform: translateX(-100%);
+    }
+  }
+
+
+
+  @keyframes blinking {
+    from {
+        color: red;
+    }
+    to {
+        color: green;
+    }
+  }
