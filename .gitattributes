@@ -1,1 +1,2 @@
 *.cgi linguist-language=Scheme
+static/js/* linguist-vendored
