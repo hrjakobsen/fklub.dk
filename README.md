@@ -18,7 +18,7 @@ This is a work-in-progress for the new front-page for [fklub.dk](http://fklub.dk
 git clone https://github.com/hrjakobsen/fklub.dk
 ```
 2. Run `docker-compose up -d`
-3. Access the page at http://localhost:4000
+3. Access the page at http://localhost:4000/cgi-bin/index.cgi
 
 ## Creating an admin user
 After the server has been started in step to, add a new user 
