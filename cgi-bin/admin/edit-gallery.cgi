@@ -26,6 +26,9 @@
 (define cur-gallery 
 	(as-symbol (defaulted-get 'cur-gallery url-pars 'none )))
 	
+(define error
+    (as-symbol (defaulted-get 'error url-pars 'none)))
+	
 (define galleries (dir-list "/data/galleries/"))
 
 (define (get-images gallery-id) 
@@ -34,6 +37,7 @@
 (define gallery-overview
 	(con 
 		(map (lambda (g) (a 'href (string-append "edit-gallery.cgi?cur-gallery=" g) g)) galleries)
+		(if (eq? error 'empty-gallery-name ) (p "Giv" (b "venligst") "galleriet et navn.") (div))
 		(form-1 
 			"create-gallery.cgi"
 			(con 

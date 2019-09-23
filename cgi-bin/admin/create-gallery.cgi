@@ -30,7 +30,7 @@
     
     (if (not (equal? (string-length name) 0))
         (redirect (string-append "/cgi-bin/admin/edit-gallery.cgi?cur-gallery=" name))
-        (redirect (string-append "/cgi-bin/admin/edit-gallery.cgi?err=empty-gallery-name))
+        (redirect (string-append "/cgi-bin/admin/edit-gallery.cgi?error=empty-gallery-name"))
     )
 )
 
