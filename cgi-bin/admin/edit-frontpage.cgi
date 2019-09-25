@@ -24,14 +24,29 @@
 
 (define (edit-form current-data) 
 	  	(container 
+		  (h3 "Rediger forside")
+		  (p "Følgende funktioner er tilgængelige:")
+		  (ul
+		  	(li "(section [baggrundsfarve] [data])")
+		  	(li "(text [data])")
+		  	(li "(title [titel])")
+		  	(li "(link [url])")
+		  	(li "(image [url])")
+		  	(li "(images [data])")
+		  	(li "(center [data])")
+		  )
+		  (p "Eksempel på side")
+		  (pre 'class "example-frontpage" "(section \"#efefef\"\n\t(title \"F-Klubben\")\n\t(text \"Beskrivelse af F-Klubbens arbejde\")\n\t(image \"https://via.placeholder.com/300x150\")\n)")
 		 	(form-1 
 		 		"upload-frontpage.cgi"
 		 		(con 
 		 			(textarea 'name 'data 'rows "25" 'class "frontpage-field" current-data)
 					(br)
-		 			(submit "Gem")
+					(br)
+		 			(submit-btn "Gem")
 		 		)
-		 	)))
+		 	)
+			 (br)))
 
 (fklub-page "Rediger forside" (con admin-menu-list (edit-form data)))
 

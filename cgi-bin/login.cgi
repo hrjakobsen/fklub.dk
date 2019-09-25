@@ -19,6 +19,7 @@
 (cgi-lib-load "lib/cgi.scm")
 (cgi-lib-load "lib/file.scm")
 (cgi-lib-load "lib/common.scm")
+(cgi-lib-load "common.scm")
 
 (define cgi-testing #f)
 (define url-pars (extract-url-parameters))
@@ -64,17 +65,23 @@
 
 (if (eq? mode 'do-login)
     (perform-login)
-    (write-page
+    (bare-page
         "Login"
-        (form-1
-          "login.cgi?mode=do-login"
-          (con
-              (if (eq? error 'none ) (div) (p (symbol->string error)))
-              (text-line 'username 8 "")
-              (br)
-              (password-line 'password 8 "")
-              (br)
-              (submit "Login"))
-        )
-      ))
+        (div 'class "login-page"
+            (div 'class "login-form" 
+                (con
+                    (img 'src "/images/fklub_logo.svg")
+                    (form-1
+                        "login.cgi?mode=do-login"
+                        (con
+                            (if (eq? error 'none ) (div) (p (symbol->string error)))
+                            (label 'for 'username "Brugernavn")
+                            (input 'type "text" 'name 'username 'placeholder "Brugernavn" 'class "form-control")
+                            (br)
+                            (label 'for 'username "Kode")
+                            (input 'type "password" 'name 'password 'placeholder "Kode" 'class "form-control")
+                            (br)
+                            (input 'type "submit" 'class "btn btn-primary" 'value "Login")))
+                    (br)
+                    (a 'class "small" 'href "/cgi-bin/index.cgi" (con (fa "chevron-left") "Gå tilbage til fklub.dk")))))))
 (end)

@@ -57,3 +57,22 @@
 (define (repeat-el x el)
 	(if (<= x 1) el
 		(con el (repeat (- x 1) el))))
+
+(define (bare-page page-title x) 
+	(cgi-write 
+		(html
+			(head
+				(title (string-append page-title " - Fklub.dk"))
+				(meta 'charset "utf-8")
+				(link 'rel "stylesheet" 'href "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css")
+				(link 'rel "stylesheet" 'href "/style.css")
+				(link 'rel "stylesheet" 'href "https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap")
+				(link 'rel "stylesheet" 'href "https://fonts.googleapis.com/css?family=Open+Sans&display=swap")
+				(link 'rel "stylesheet" 'href "https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css"))
+			(body x))))
+
+(define (input-text name placeholder)
+	(input 'type "text" 'placeholder placeholder 'name name 'class "form-control"))
+
+(define (submit-btn value)
+	(input 'type "submit" 'class "btn btn-primary" 'value value))

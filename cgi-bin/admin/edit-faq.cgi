@@ -26,6 +26,7 @@
 
 (define (faq questions) 
 	  	(container 
+			(h3 "Spørgsmål")
 		    (if (null? questions) (p "Ingen spørgsmål")
 				(table 'border 1
 					(thead
@@ -46,13 +47,17 @@
 											(submit "SLET")))
 								))) questions)))
 				)
-
+			(h3 "Tilføj nyt spørgsmål")
 		 	(form-1 
 		 		"upload-faq.cgi"
 		 		(con 
-		 			(text-line 'question 3 "")
-		 			(text-line 'answer 3 "")
-		 			(submit "Tilføj FAQ")
+					(label 'for 'question "Spørgsmål")
+		 			(input-text 'question "Spørgsmål")
+					(br)
+					(label 'for 'answer "Svar")
+		 			(input-text 'answer "Svar")
+					(br)
+		 			(submit-btn "Tilføj FAQ")
 		 		)
 		 	)))
 

@@ -26,6 +26,7 @@
 
 (define (dictionary entries) 
 	  	(container 
+		  (h3 "F-Ordbog")
 		    (if (null? entries) (p "Ingen opslag")
 				(table 'border 1
 					(thead
@@ -47,13 +48,17 @@
 											)))
 							)) entries))
 				))
-
+			(h3 "Tilføj nyt ord")
 		 	(form-1 
 		 		"upload-f-ordbog-word.cgi"
 		 		(con 
-		 			(text-line 'word 3 "")
-		 			(text-line 'meaning 3 "")
-		 			(submit "Tilføj ord")
+					(label 'for 'word "Spørgsmål")
+		 			(input-text 'word "Spørgsmål")
+					(br)
+					(label 'for 'meaning "Svar")
+		 			(input-text 'meaning "Svar")
+					(br)
+		 			(submit-btn "Tilføj ord")
 		 		)
 		 	)))
 
