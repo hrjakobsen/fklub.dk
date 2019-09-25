@@ -26,7 +26,7 @@
 
 
 (define (faq questions) 
-	  	(div 
+	  	(container 
 		    (if (null? questions) (p "Ingen spørgsmål")
 				(ul
 			  		(map (lambda (x) (li (string-append (car x) " - " (cdr x)))) questions)

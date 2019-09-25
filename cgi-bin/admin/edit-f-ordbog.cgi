@@ -25,7 +25,7 @@
 		(if (list? data) (reverse data) (list))))
 
 (define (dictionary entries) 
-	  	(div 
+	  	(container 
 		    (if (null? entries) (p "Ingen opslag")
 				(table 'border 1
 					(thead

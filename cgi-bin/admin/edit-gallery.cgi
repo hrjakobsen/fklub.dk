@@ -76,9 +76,9 @@
 (define page-body
 	(con
 		admin-menu-list
-		(if (eq? 'none cur-gallery)
+		(container (if (eq? 'none cur-gallery)
 			gallery-overview
-			(gallery (symbol->string cur-gallery)))))
+			(gallery (symbol->string cur-gallery))))))
 
 (fklub-page "test" page-body)
 

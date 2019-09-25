@@ -33,7 +33,7 @@
 
 
 (define (dictionary entries) 
-	  	(div 
+	  	(container 
 		    (if (null? entries) (p "Ingen opslag")
 				(con
 			  		(map create-entry entries)

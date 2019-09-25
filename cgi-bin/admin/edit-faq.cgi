@@ -25,7 +25,7 @@
 		(if (list? data) (reverse data) (list))))
 
 (define (faq questions) 
-	  	(div 
+	  	(container 
 		    (if (null? questions) (p "Ingen spørgsmål")
 				(table 'border 1
 					(thead

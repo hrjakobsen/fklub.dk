@@ -23,10 +23,10 @@ body {
     display: flex;
     flex-direction: column;
     font-family: "Open Sans", Arial, Helvetica, sans-serif;
+    font-size: 18px;
 }
 
 .content {
-    margin: 20px 0;
     flex: 1 0 auto;
 }
 
@@ -83,3 +83,29 @@ body {
 .gallery-col .col {
     text-align: center;
 }
+
+.section {
+    padding: 20px 0;
+}
+
+.section .imagecontainer  { 
+    text-align: center;
+}
+
+.imagecontainer img {
+    max-width: 100%;
+}
+
+.center {
+    text-align: center;
+}
+
+
+.imagescontainer .imagecontainer {
+    display: inline;
+}
+.imagescontainer {
+    text-align: center;
+    vertical-align: top;
+}
+

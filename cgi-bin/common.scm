@@ -51,7 +51,7 @@
 				(con 
 					fklub-header
 					(div 'class "content" 
-						(container x))
+						x)
 					fklub-footer)))))
 
 (define (repeat-el x el)
