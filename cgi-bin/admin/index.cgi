@@ -23,7 +23,7 @@
 
 
 (fklub-page
-  "test"
+  "Admin forside"
   (con 
     admin-menu-list
     )

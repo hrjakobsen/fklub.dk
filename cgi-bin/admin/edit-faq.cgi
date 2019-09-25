@@ -56,6 +56,6 @@
 		 		)
 		 	)))
 
-(fklub-page "test" (con admin-menu-list (faq questions)))
+(fklub-page "Rediger FAQ" (con admin-menu-list (faq questions)))
 
 (end)

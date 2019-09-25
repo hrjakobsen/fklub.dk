@@ -57,6 +57,6 @@
 		 		)
 		 	)))
 
-(fklub-page "test" (con admin-menu-list (dictionary entries)))
+(fklub-page "Rediger F-Ordbog" (con admin-menu-list (dictionary entries)))
 
 (end)

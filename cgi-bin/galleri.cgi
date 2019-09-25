@@ -57,6 +57,6 @@
 		gallery-overview
 		(gallery (symbol->string cur-gallery)))))
 
-(fklub-page "Gallery" page-body)
+(fklub-page "Galleri" page-body)
 
 (end)

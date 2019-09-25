@@ -27,11 +27,12 @@
 		 	(form-1 
 		 		"upload-frontpage.cgi"
 		 		(con 
-		 			(textarea-1 'data 25 90 current-data)
-		 			(submit "Upload")
+		 			(textarea 'name 'data 'rows "25" 'class "frontpage-field" current-data)
+					(br)
+		 			(submit "Gem")
 		 		)
 		 	)))
 
-(fklub-page "test" (con admin-menu-list (edit-form data)))
+(fklub-page "Rediger forside" (con admin-menu-list (edit-form data)))
 
 (end)

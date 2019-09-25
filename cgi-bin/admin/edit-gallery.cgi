@@ -80,6 +80,6 @@
 			gallery-overview
 			(gallery (symbol->string cur-gallery))))))
 
-(fklub-page "test" page-body)
+(fklub-page "Rediger galleri" page-body)
 
 (end)

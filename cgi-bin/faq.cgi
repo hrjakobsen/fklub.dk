@@ -24,15 +24,21 @@
 	(let ((data (safe-read "/data/faq.scm" '()))) 
 		(if (list? data) (reverse data) (list))))
 
+(define (faq-element x)
+	(div 'class "faq" 
+		(div 'class "faq-word" (span 'class "faq-title" (car x)))
+		(div 'class "faq-answer" (cdr x))))
 
 (define (faq questions) 
 	  	(container 
+		  (con 
+			(heading "Hyppigt stillede spørgsmål")
 		    (if (null? questions) (p "Ingen spørgsmål")
-				(ul
-			  		(map (lambda (x) (li (string-append (car x) " - " (cdr x)))) questions)
-				))))
+				(div
+			  		(map faq-element questions)
+				)))))
 	
 
-(fklub-page "test" (faq questions))
+(fklub-page "Hyppigt stillede spørgsmål" (faq questions))
 
 (end)

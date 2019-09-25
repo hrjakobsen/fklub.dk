@@ -109,3 +109,17 @@ body {
     vertical-align: top;
 }
 
+
+.faq {
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #efefef;
+}
+
+.faq-title {
+    font-weight: bold;
+}
+
+.frontpage-field {
+    width: 100%;
+}

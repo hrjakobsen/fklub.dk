@@ -25,19 +25,24 @@
 		(if (list? data) (reverse data) (list))))
 
 (define (create-entry x)
-	(div 'class "word-definition"
-		(div 'class "word-title"
-			(span 'class "title-text" (car x)))
-		(div 'class "word-description"
-			(span 'class="description-text" (cdr x)))))
+	(tr 
+		(td (car x))
+		(td (cdr x))))
 
 
 (define (dictionary entries) 
 	  	(container 
+		  (con
+		    (heading "F-Ordbog")
 		    (if (null? entries) (p "Ingen opslag")
-				(con
-			  		(map create-entry entries)
-				))))
+				(table 'class "f-dictionary table table-striped"
+					(thead
+						(tr 
+							(th 'class "f-dictionary-title-word" "Ord")
+							(th 'class "f-dictionary-title-description" "Beskrivelse")))
+					(tbody
+			  			(map create-entry entries))
+				)))))
 	
-(fklub-page "test" (dictionary entries))
+(fklub-page "F-Ordbog" (dictionary entries))
 (end)

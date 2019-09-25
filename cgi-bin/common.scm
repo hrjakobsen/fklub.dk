@@ -38,7 +38,7 @@
 	(cgi-write 
 		(html
 			(head
-				(title page-title)
+				(title (string-append page-title " - Fklub.dk"))
 				(meta 'charset "utf-8")
 				(link 'rel "stylesheet" 'href "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css")
 				(link 'rel "stylesheet" 'href "/style.css")
