@@ -4,7 +4,7 @@ Implementation of [fklub.dk](http://fklub.dk) written in the [LAML](http://peopl
 > 
 > -- <cite>Albert Einstein 1367</cite>
 
-LAML is a framekwork written by [Kurt Nørmark](http://people.cs.aau.dk/~normark) that enables the use of the Scheme 
+LAML is a framework written by [Kurt Nørmark](http://people.cs.aau.dk/~normark) that enables the use of the Scheme 
 programming language for writing dynamic web pages using CGI-programming and [HTML mirror functions](http://people.cs.aau.dk/~normark/laml-distributions/laml/lib/xml-in-laml/mirrors/man/xhtml10-transitional-mirror.html#MANUAL-TOP). 
 
 This is a work-in-progress for the new front-page for [fklub.dk](http://fklub.dk) written in this framework.
