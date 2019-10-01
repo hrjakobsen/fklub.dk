@@ -23,10 +23,10 @@ body {
     display: flex;
     flex-direction: column;
     font-family: "Open Sans", Arial, Helvetica, sans-serif;
+    font-size: 18px;
 }
 
 .content {
-    margin: 20px 0;
     flex: 1 0 auto;
 }
 
@@ -82,4 +82,99 @@ body {
 
 .gallery-col .col {
     text-align: center;
+}
+
+.section {
+    padding: 20px 0;
+}
+
+.section .imagecontainer  { 
+    text-align: center;
+}
+
+.imagecontainer img {
+    max-width: 100%;
+}
+
+.center {
+    text-align: center;
+}
+
+
+.imagescontainer .imagecontainer {
+    display: inline;
+}
+.imagescontainer {
+    text-align: center;
+    vertical-align: top;
+}
+
+
+.faq {
+    padding: 10px;
+    margin-bottom: 10px;
+    background-color: #efefef;
+}
+
+.faq-title {
+    font-weight: bold;
+}
+
+.frontpage-field {
+    width: 100%;
+}
+
+.login-page {
+    padding-top: 100px;
+}
+
+.login-form {
+    margin-top: 100px;
+    width: 350px;
+    margin: 0 auto;
+    padding: 20px;
+    border-radius: .25rem;
+    box-shadow: 6px 6px 14px 3px rgba(0,0,0,0.3);
+}
+
+.login-form img {
+    margin-bottom: 10px;
+}
+
+.login-form input {
+    width: 100%;
+}
+
+label {
+    font-size: 0.8rem;
+    font-weight: bold;
+    margin-bottom: 0px;
+}
+
+.back-link {
+    margin-top: 10px;
+}
+
+.gallery-img {
+    position: relative;
+    height: 200px;
+    margin-bottom: 20px;
+}
+
+.gallery-img  img {
+    max-height: 200px;
+}
+
+.gallery-img .remove-button {
+    position: absolute;
+    height: 48px;
+    width: 48px;
+    text-align: center;
+    line-height: 48px;
+    top: 0;
+    right: 15px;
+}
+
+.example-frontpage {
+    background-color: #efefef;
 }

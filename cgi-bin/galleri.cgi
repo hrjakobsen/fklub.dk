@@ -53,10 +53,10 @@
 	  
 
 (define page-body
-	(if (eq? 'none cur-gallery)
+	(container (if (eq? 'none cur-gallery)
 		gallery-overview
-		(gallery (symbol->string cur-gallery))))
+		(gallery (symbol->string cur-gallery)))))
 
-(fklub-page "Gallery" page-body)
+(fklub-page "Galleri" page-body)
 
 (end)

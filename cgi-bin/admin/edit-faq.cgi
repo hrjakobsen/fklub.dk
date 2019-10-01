@@ -25,7 +25,8 @@
 		(if (list? data) (reverse data) (list))))
 
 (define (faq questions) 
-	  	(div 
+	  	(container 
+			(h3 "Spørgsmål")
 		    (if (null? questions) (p "Ingen spørgsmål")
 				(table 'border 1
 					(thead
@@ -46,16 +47,20 @@
 											(submit "SLET")))
 								))) questions)))
 				)
-
+			(h3 "Tilføj nyt spørgsmål")
 		 	(form-1 
 		 		"upload-faq.cgi"
 		 		(con 
-		 			(text-line 'question 3 "")
-		 			(text-line 'answer 3 "")
-		 			(submit "Tilføj FAQ")
+					(label 'for 'question "Spørgsmål")
+		 			(input-text 'question "Spørgsmål")
+					(br)
+					(label 'for 'answer "Svar")
+		 			(input-text 'answer "Svar")
+					(br)
+		 			(submit-btn "Tilføj FAQ")
 		 		)
 		 	)))
 
-(fklub-page "test" (con admin-menu-list (faq questions)))
+(fklub-page "Rediger FAQ" (con admin-menu-list (faq questions)))
 
 (end)

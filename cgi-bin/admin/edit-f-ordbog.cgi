@@ -25,7 +25,8 @@
 		(if (list? data) (reverse data) (list))))
 
 (define (dictionary entries) 
-	  	(div 
+	  	(container 
+		  (h3 "F-Ordbog")
 		    (if (null? entries) (p "Ingen opslag")
 				(table 'border 1
 					(thead
@@ -47,16 +48,20 @@
 											)))
 							)) entries))
 				))
-
+			(h3 "Tilføj nyt ord")
 		 	(form-1 
 		 		"upload-f-ordbog-word.cgi"
 		 		(con 
-		 			(text-line 'word 3 "")
-		 			(text-line 'meaning 3 "")
-		 			(submit "Tilføj ord")
+					(label 'for 'word "Spørgsmål")
+		 			(input-text 'word "Spørgsmål")
+					(br)
+					(label 'for 'meaning "Svar")
+		 			(input-text 'meaning "Svar")
+					(br)
+		 			(submit-btn "Tilføj ord")
 		 		)
 		 	)))
 
-(fklub-page "test" (con admin-menu-list (dictionary entries)))
+(fklub-page "Rediger F-Ordbog" (con admin-menu-list (dictionary entries)))
 
 (end)

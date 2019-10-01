@@ -12,11 +12,15 @@
 (lib-load "html4.01-transitional-validating/convenience.scm")
 
 (load "common.scm")
+(load "lib/namespace.scm")
+(load "lib/file.scm")
 (define cgi-testing #f)
 
 (fklub-page
   "Forside"
   (con
-    (p "page")
+    (let ((ns (create-famespace))
+          (data (safe-read "/data/frontpage.scm" ""))) 
+        (parameterize ((current-namespace ns)) (eval (read (open-input-string (string-append "(list " data ")"))))))
   ))
 (end)

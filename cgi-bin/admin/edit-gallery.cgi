@@ -36,32 +36,37 @@
 
 (define gallery-overview
 	(con 
-		(map (lambda (g) (a 'href (string-append "edit-gallery.cgi?cur-gallery=" g) g)) galleries)
+		(h3 "Gallerier")
+		(div 'class "list-group"
+		(map (lambda (g) (a 'class "list-group-item list-group-item-action" 'href  (string-append "edit-gallery.cgi?cur-gallery=" g) g)) galleries))
+		(h3 "Tilføj nyt galleri")
 		(if (eq? error 'empty-gallery-name ) (p "Giv" (b "venligst") "galleriet et navn.") (div))
 		(form-1 
 			"create-gallery.cgi"
 			(con 
-				(text-line 'name 3 "")
-				(submit "Opret")))))
+				(input-text 'name "Galleri-navn")
+				(br)
+				(submit-btn "Opret")))))
 
 (define (gallery gallery-id)
 	(con
+		(h3 (string-append "Rediger " gallery-id))
 		(if (> (length (get-images gallery-id)) 0)
-			(table 'border 1
-				(tbody
-					(map (lambda (image)
-					(tr
-						(td 
-							(img 'width 200 'src (string-append "/galleries/" gallery-id "/" image)))
-						(td 
-							(form-1 
+			(con
+			(row
+				(map (lambda (image) 
+					(col "col-sm-3 gallery-img" 
+						(con
+						(form-1 
 								(string-append "remove-image.cgi?cur-gallery=" gallery-id)
 								(con 
 									(hidden-line 'image image)
-									(submit "SLET")
+									(button 'type "submit" 'class "btn btn-danger remove-button" (fa "trash"))
 								)
-							)))) (get-images gallery-id)))
-				)
+							)
+						(img 'width 200 'src (string-append "/galleries/" gallery-id "/" image))))
+				) (get-images gallery-id))
+			))
 				(p "No images"))
 		(multipart-form 
 			(string-append "upload-images.cgi?cur-gallery=" gallery-id) 
@@ -70,20 +75,23 @@
 			(con 
 				(input 'type "hidden" 'name "cur-gallery" 'value gallery-id)
 				(input 'type "file" 'name "images" 'multiple "")
-				(submit "Tilføj billede")))
+				(br)
+				(br)
+				(submit-btn "Upload billeder")))
+		(br)
 		(form-1 
 			(string-append "remove-gallery.cgi?cur-gallery=" gallery-id)
 			(con 
-				(submit "SLET GALLERI")))))
+				(button 'type "submit" 'class "btn btn-danger remove-button" (con "Slet galleri" (fa "trash")))))))
 
 
 (define page-body
 	(con
 		admin-menu-list
-		(if (eq? 'none cur-gallery)
+		(container (if (eq? 'none cur-gallery)
 			gallery-overview
-			(gallery (symbol->string cur-gallery)))))
+			(gallery (symbol->string cur-gallery))))))
 
-(fklub-page "test" page-body)
+(fklub-page "Rediger galleri" page-body)
 
 (end)
