@@ -1,3 +1,4 @@
+(define cgi-testing #f)
 (define (redirect x) 
-    (display (string-append "Location: http://" (getenv "HTTP_HOST") x "\n\n"))
+    (cgi-write (string-append "<meta http-equiv='refresh' content='0; URL=" x "'>"))
     (end))

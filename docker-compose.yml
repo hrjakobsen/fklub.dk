@@ -11,5 +11,6 @@ services:
         environment:
           - LAMLDIR=/usr/bin/laml/
         tty: true
+        restart: always
 volumes:
     laml-data:
