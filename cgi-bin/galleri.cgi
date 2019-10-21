@@ -21,13 +21,24 @@
 (load "lib/file.scm")
 (load "lib/date.scm")
 
+(define (in-gallery? str) (in-gallery-char? (string->list str)))
+
+(define (in-gallery-char? char-list)
+	(if (null? char-list) #t
+		(let ((first (car char-list)))
+			(and (not (eq? first #\.))
+			     (not (eq? first #\/))
+				 (in-gallery-char? (cdr char-list))))))
+
 (define cur-gallery 
     (as-symbol (defaulted-get 'cur-gallery url-pars 'none )))
 	
 (define galleries (reverse (dir-list "/data/galleries/")))
 
 (define (get-images gallery-id) 
-	(dir-list (string-append "/data/galleries/" gallery-id)))
+	(if (in-gallery? gallery-id)
+		(dir-list (string-append "/data/galleries/" gallery-id))
+		'()))
 
 (define (to-thumbnail image gallery-id) 
 	(let ((url (string-append "/galleries/" gallery-id "/" image)))
