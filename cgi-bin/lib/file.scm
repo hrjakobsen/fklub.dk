@@ -30,3 +30,12 @@
 	(read-data-file path))
 
 (define (get-last-edit file) (seconds->date (file-or-directory-modify-seconds file)))
+
+(define (in-gallery? str) (in-gallery-char? (string->list str)))
+
+(define (in-gallery-char? char-list)
+	(if (null? char-list) #t
+		(let ((first (car char-list)))
+			(and (not (eq? first #\.))
+			     (not (eq? first #\/))
+				 (in-gallery-char? (cdr char-list))))))
