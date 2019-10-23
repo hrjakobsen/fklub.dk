@@ -29,7 +29,9 @@
 (define galleries (dir-list "/data/galleries/"))
 
 (define (get-images gallery-id) 
-	(dir-list (string-append "/data/galleries/" gallery-id)))
+	(if (in-gallery? gallery-id)
+		(dir-list (string-append "/data/galleries/" gallery-id))
+		'()))
 
 (define gallery-overview
 	(con 
@@ -64,21 +66,24 @@
 				) (get-images gallery-id))
 			))
 				(p "No images"))
-		(multipart-form 
-			(string-append "upload-images.cgi?cur-gallery=" gallery-id) 
-			(string-append "/data/galleries/" gallery-id "/") 
-			(string-append "/galleries/" gallery-id) 
+		(if (in-gallery? gallery-id)
 			(con 
-				(input 'type "hidden" 'name "cur-gallery" 'value gallery-id)
-				(input 'type "file" 'name "images" 'multiple "")
+				(multipart-form 
+					(string-append "upload-images.cgi?cur-gallery=" gallery-id) 
+					(string-append "/data/galleries/" gallery-id "/") 
+					(string-append "/galleries/" gallery-id) 
+					(con 
+						(input 'type "hidden" 'name "cur-gallery" 'value gallery-id)
+						(input 'type "file" 'name "images" 'multiple "")
+						(br)
+						(br)
+						(submit-btn "Upload billeder")))
 				(br)
-				(br)
-				(submit-btn "Upload billeder")))
-		(br)
-		(form-1 
-			(string-append "remove-gallery.cgi?cur-gallery=" gallery-id)
-			(con 
-				(button 'type "submit" 'class "btn btn-danger remove-button" (con "Slet galleri" (fa "trash")))))))
+				(form-1 
+					(string-append "remove-gallery.cgi?cur-gallery=" gallery-id)
+					(con 
+						(button 'type "submit" 'class "btn btn-danger remove-button" (con "Slet galleri" (fa "trash"))))))
+						(p (b "Please") "select a valid gallery"))))
 
 
 (define page-body

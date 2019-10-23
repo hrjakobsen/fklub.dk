@@ -40,6 +40,7 @@
 			(head
 				(title (string-append page-title " - Fklub.dk"))
 				(meta 'charset "utf-8")
+				(meta 'http-equiv "X-UA-Compatible" 'content "IE=edge")
 				(link 'rel "stylesheet" 'href "https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css")
 				(link 'rel "stylesheet" 'href "/style.css")
 				(link 'rel "stylesheet" 'href "https://fonts.googleapis.com/css?family=Josefin+Sans&display=swap")
