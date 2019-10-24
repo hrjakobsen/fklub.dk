@@ -184,3 +184,9 @@ label {
     max-height: 200px;
     box-sizing: border-box;
 }
+
+.error {
+    padding: 10px;
+    background-color: #00000012;
+    border: 2px solid red;
+}

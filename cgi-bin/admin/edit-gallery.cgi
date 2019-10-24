@@ -83,8 +83,10 @@
 						(br)
 						(submit-btn "Upload billeder")))
 				(br)
-				(form-1 
-					(string-append "remove-gallery.cgi?cur-gallery=" gallery-id)
+				(form
+					'action (string-append "remove-gallery.cgi?cur-gallery=" gallery-id)
+					'method "POST"
+					'onsubmit "return confirm('Bekræft sletning af galleri');"
 					(con 
 						(button 'type "submit" 'class "btn btn-danger remove-button" (con "Slet galleri" (fa "trash"))))))
 						(p (b "Please") "select a valid gallery"))))
@@ -93,9 +95,14 @@
 (define page-body
 	(con
 		admin-menu-list
-		(container (if (eq? 'none cur-gallery)
-			gallery-overview
-			(gallery (symbol->string cur-gallery))))))
+		(container 
+			(con 
+				(if (eq? 'none error)
+					'()
+					(p 'class 'error (symbol->string error)))
+				(if (eq? 'none cur-gallery)
+					gallery-overview
+					(gallery (symbol->string cur-gallery)))))))
 
 (fklub-page "Rediger galleri" page-body)
 

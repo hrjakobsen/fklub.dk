@@ -39,3 +39,12 @@
 			(and (not (eq? first #\.))
 			     (not (eq? first #\/))
 				 (in-gallery-char? (cdr char-list))))))
+
+
+(define (delete-recursive dir)
+	(let ((files (directory-list dir)))
+		(if (null? files)
+			(delete-directory dir)
+			(begin 
+				(delete-file (string-append dir "/" (car files)))
+				(delete-recursive dir)))))

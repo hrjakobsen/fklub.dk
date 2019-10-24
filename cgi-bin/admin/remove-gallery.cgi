@@ -29,8 +29,11 @@
 	(as-symbol (defaulted-get 'cur-gallery url-pars 'qawsdgfhjklnbhgdcfgkhjk ))) ; invalid gallery so the scripts fails
 
 
-(delete-directory (string-append "/data/galleries/" (symbol->string cur-gallery)))
-
-(redirect "/cgi-bin/admin/edit-gallery.cgi")
-
-(end)
+(if (and (in-gallery? (symbol->string cur-gallery)) (> (string-length (symbol->string cur-gallery)) 0))
+	(begin
+		(delete-recursive (string-append "/data/galleries/" (symbol->string cur-gallery)))
+		(redirect "/cgi-bin/admin/edit-gallery.cgi")
+		(end))
+	(begin 
+		(redirect "/cgi-bin/admin/edit-gallery.cgi?error=Slet venligst kun rigtige gallerier")
+		(end)))
