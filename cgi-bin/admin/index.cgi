@@ -18,14 +18,17 @@
 (cgi-lib-load "admin/admin.scm")
 (cgi-lib-load "common.scm")
 (cgi-lib-load "lib/file.scm")
+(cgi-lib-load "lib/cookies.scm")
 
 (ensure-admin)
-
 
 (fklub-page
   "Admin forside"
   (con 
     admin-menu-list
+    (container (con 
+      (h2 (string-append "Velkommen, " (get-cookie 'username ) "!"))
+      (p "Det er her det sjove sker. Her kan du finjustere indholdet på fklub.dk. Er der kommet et nyt spørgsmål? Ret FAQ'en. Nyt arrangement? Opret et galleri. Nyt fordspil? Tilføj det til F-ordbogen. Sidst men ikke mindst har du mulighed for at fremvise dine Scheme evner, ved at opdatere frontenden, som selvfølgelig skrives i vores alle sammen yndlingssprog. ")))
     )
 )
 

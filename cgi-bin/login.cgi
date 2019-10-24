@@ -60,7 +60,7 @@
                 (write-data-file (string-append "/data/users/" username "/session.dat") session-id)
                 (set-cookie! 'session-id session-id)
                 (set-cookie! 'username username)
-                (redirect "/cgi-bin/index.cgi")
+                (redirect "/cgi-bin/admin/index.cgi")
                 )))))))
 
 (if (eq? mode 'do-login)
