@@ -28,7 +28,7 @@
     admin-menu-list
     (container (con 
       (h2 (string-append "Velkommen, " (get-cookie 'username ) "!"))
-      (p "Det er her det sjove sker. Her kan du finjustere indholdet på fklub.dk. Er der kommet et nyt spørgsmål? Ret FAQ'en. Nyt arrangement? Opret et galleri. Nyt fordspil? Tilføj det til F-ordbogen. Sidst men ikke mindst har du mulighed for at fremvise dine Scheme evner, ved at opdatere frontenden, som selvfølgelig skrives i vores alle sammen yndlingssprog. ")))
+      (p "Det er her det sjove sker. Her kan du finjustere indholdet på fklub.dk. Er der kommet et nyt spørgsmål? Ret FAQ'en. Nyt arrangement? Opret et galleri. Nyt fordspil? Tilføj det til F-ordbogen. Sidst men ikke mindst har du mulighed for at fremvise dine Scheme evner, ved at opdatere forsiden, som selvfølgelig skrives i vores alle sammen yndlingssprog. ")))
     )
 )
 
