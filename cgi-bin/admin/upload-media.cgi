@@ -22,16 +22,10 @@
 
 (ensure-admin)
 
-
-(define url-pars (extract-url-parameters))
-
-(define cur-gallery 
-	(as-symbol (defaulted-get 'cur-gallery url-pars 'none )))
-
 (load "/usr/local/cgi-bin/lib/multipart-form-fix.scm")
 
 (multipart-decode (current-seconds))
 
-(redirect (string-append "/cgi-bin/admin/edit-gallery.cgi?cur-gallery=" (symbol->string cur-gallery)))
+(redirect "/cgi-bin/admin/media-library.cgi")
 
 (end)

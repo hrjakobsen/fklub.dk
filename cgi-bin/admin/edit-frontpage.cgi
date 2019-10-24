@@ -25,6 +25,7 @@
 (define (edit-form current-data) 
 	  	(container 
 		  (h3 "Rediger forside")
+		  (button 'class "btn btn-primary" 'onclick "window.open('/cgi-bin/admin/media-library.cgi','Media Library','height= 480 px,width =760 px ,')" "Åbn mediebibliotek")
 		  (p "Følgende funktioner er tilgængelige:")
 		  (ul
 		  	(li "(section [baggrundsfarve] [data])")

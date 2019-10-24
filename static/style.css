@@ -178,3 +178,9 @@ label {
 .example-frontpage {
     background-color: #efefef;
 }
+
+.media-thumbnail, .media-link {
+    width: 100%;
+    max-height: 200px;
+    box-sizing: border-box;
+}
