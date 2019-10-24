@@ -27,8 +27,12 @@
         (name (as-string (get 'name form-a-list)))
        )
     (ensure-exists (string-append "/data/galleries/" name))
-    (redirect (string-append "/cgi-bin/admin/edit-gallery.cgi?cur-gallery=" name))
+    
+    (if (not (equal? (string-length name) 0))
+        (redirect (string-append "/cgi-bin/admin/edit-gallery.cgi?cur-gallery=" name))
+        (redirect (string-append "/cgi-bin/admin/edit-gallery.cgi?error=empty-gallery-name"))
     )
+)
 
 
 (end)
