@@ -7,7 +7,6 @@
 (lib-load "encode-decode.scm") ;  
 (lib-load "color.scm") ;  
 (lib-load "file-read.scm") ;  
-(lib-load "crypt.scm") ;  
 
 ; HTML mirror loading
 (lib-load "html4.01-transitional-validating/basis.scm")
@@ -20,6 +19,7 @@
 (cgi-lib-load "lib/file.scm")
 (cgi-lib-load "lib/common.scm")
 (cgi-lib-load "common.scm")
+(load "lib/security.scm")
 
 (define cgi-testing #f)
 (define url-pars (extract-url-parameters))
@@ -36,13 +36,10 @@
 
 (define random-session (lambda () (random-string 64)))
 
-(define (hash-password password)
-    (crypt-string password))
-
 (define (correct-password? username password)
     (let* 
         ((data (read-data-file (string-append "/data/users/" username "/password.dat"))))
-        (equal? data (hash-password password))
+        (validate-password password data)
     ))
 
 (define perform-login (lambda () 
