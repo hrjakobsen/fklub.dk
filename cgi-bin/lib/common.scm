@@ -1,3 +1,8 @@
+(define (debug x)
+    (begin
+        (display x (current-error-port))
+        x))
+
 (define (eq-lookup symbol a-list)
     (if (null?  a-list) #f
         (if (equal? (caar a-list) symbol) 

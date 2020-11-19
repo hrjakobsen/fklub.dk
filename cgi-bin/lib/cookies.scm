@@ -4,11 +4,6 @@
 (define (set-cookie! name content) 
     (display (string-append "Set-Cookie: " (symbol->string name) "=" (url-encode content) "; SameSite=Strict\n")))
 
-(define (debug x)
-    (begin
-        (display x (current-error-port))
-        x))
-
 (define (get-cookie name) 
     (eq-lookup name (get-all-cookies #f)))
 
